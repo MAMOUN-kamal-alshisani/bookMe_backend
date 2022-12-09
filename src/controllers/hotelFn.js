@@ -1,17 +1,5 @@
 const hotelModel = require("../models/hotels.js");
 const roomModel = require('../models/rooms')
-//// fetch all data from the database
-// async function fetchHotels(req, res) {
-//   hotelModel.find({}, (err, data) => {
-//     if (err) {
-//       res.status(404).send(err);
-//     }
-//     res.status(200).send(data);
-//     console.log(data);
-//   });
-
-
-// }
 
 async function fetchHotels(req, res) {
   // const featured =req.query.featured

@@ -13,10 +13,7 @@ const cookieParser = require('cookie-parser')
 const PORT = process.env.PORT || 3005
 const server = express()
 
-// server.use((err,req,res,next)=>{
-// res.status(500).send(err)
-// next()
-// })
+//// server middlewares implemented  ////
 server.use(cors())
 server.use(cookieParser())
 server.use(express.json())
@@ -27,6 +24,7 @@ server.use('/api/user',logger,UserRouter)
 // 
 
 try{
+    mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGODB)
 console.log('connected to Mongodb!')
 }catch(err){throw new Error(err)}
@@ -39,6 +37,5 @@ server.get('/',(req,res)=>{
 })
 server.get('*',(req,res)=>{
     res.status(404).send('<h1>no specified route has been found!</h1>\n <h3><a href="http://localhost:3000/">Home route</a></h3>')
-    // res.('')
 })
 server.listen(PORT,console.log(`server Running on port ${PORT}`))
